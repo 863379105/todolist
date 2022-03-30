@@ -39,6 +39,13 @@ class TodoList extends Component {
       listData: this.state.listData
     })
   }
+  handleClearCompletedTodo = () => {
+    let {listData} = this.state
+    listData = listData.filter((item) => !item.completed)
+    this.setState({
+      listData: listData
+    })
+  }
   render() {
     const {listData} = this.state;
     return (
@@ -70,7 +77,7 @@ class TodoList extends Component {
                     })}
                   </ul>
                 </section>
-                <footer className="footer" v-show="state.todos.length">
+                <footer className="footer">
                   <span className="todo-count">
                     <strong>{listData.filter((item) => !item.completed).length}</strong>
                     <span>items left</span>
@@ -80,9 +87,12 @@ class TodoList extends Component {
                     <li><a href="#/active">Active</a></li>
                     <li><a href="#/completed">Completed</a></li>
                   </ul>
-                  <button className="clear-completed">
-                    Clear completed
-                  </button>
+                  {
+                    listData.filter((item) => item.completed).length !== 0 &&
+                      (<button className="clear-completed" onClick={this.handleClearCompletedTodo}>
+                          Clear completed
+                      </button>)
+                  }
                 </footer>
               </>
             )

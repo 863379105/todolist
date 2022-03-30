@@ -291,6 +291,7 @@ body {
 
 .todo-count strong {
 	font-weight: 300;
+	margin-right: 4px;
 }
 
 .filters {
