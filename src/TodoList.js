@@ -40,11 +40,22 @@ class TodoList extends Component {
     })
   }
   handleClearCompletedTodo = () => {
-    let {listData} = this.state
+    let {listData} = this.state;
     listData = listData.filter((item) => !item.completed)
     this.setState({
       listData: listData
     })
+  }
+  handleClickAllChange = (e) => {
+    let {listData} = this.state
+    if(e.target) {
+      listData.map((item) => {
+        item.completed = e.target.checked;
+      })
+      this.setState({
+        listData: listData
+      })
+    }
   }
   render() {
     const {listData} = this.state;
@@ -62,7 +73,7 @@ class TodoList extends Component {
             listData.length !== 0 && (
               <>
                 <section className="main">
-                  <input id="toggle-all" className="toggle-all" type="checkbox" />
+                  <input id="toggle-all" className="toggle-all" type="checkbox" onChange={this.handleClickAllChange}/>
                   <label htmlFor="toggle-all">Mark all as complete</label>
                   <ul className="todo-list">
                     {listData.map((item) => {
