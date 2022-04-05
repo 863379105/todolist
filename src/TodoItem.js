@@ -16,7 +16,7 @@ class TodoItem extends Component{
     return (
       <li className={todoData.completed ? "todo completed" : "todo"}>
         <div className="view">
-          <input className="toggle" type="checkbox" onChange={this.changeTodoStatus}/>
+          <input className="toggle" checked={todoData.completed} type="checkbox" onChange={this.changeTodoStatus}/>
           <label>{todoData.title}</label>
           <button className="destroy" onClick={() => {handleDestroyTodo(todoData.id)}}></button>
         </div>

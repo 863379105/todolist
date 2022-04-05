@@ -73,7 +73,11 @@ class TodoList extends Component {
             listData.length !== 0 && (
               <>
                 <section className="main">
-                  <input id="toggle-all" className="toggle-all" type="checkbox" onChange={this.handleClickAllChange}/>
+                  <input id="toggle-all"
+                    className="toggle-all"
+                    checked={listData.filter(item => item.completed).length === listData.length}
+                    type="checkbox"
+                    onChange={this.handleClickAllChange}/>
                   <label htmlFor="toggle-all">Mark all as complete</label>
                   <ul className="todo-list">
                     {listData.map((item) => {
